@@ -1,0 +1,39 @@
+/* 
+create database capstone;
+use capstone;
+
+create user 'capstone'@'%' identified by 'team4';
+grant all on capstone.* to 'capstone'@'%';
+*/
+
+-- SELECT m.name, m.track_number, a.name, a.artist FROM MUSIC m JOIN ALBUM a ON m.album_id = a.id WHERE a.id = 2;
+
+INSERT INTO genre VALUES (1, "Alternative Rock");
+INSERT INTO genre VALUES (2, "Heavy Metal");
+
+INSERT INTO album VALUES (1, "American Idiot", "Green Day", 14.99, '2004-09-21', 1);
+INSERT INTO album VALUES (2, "British Steel", "Judas Priest", 9.99, "1980-04-14", 2);
+
+INSERT INTO music VALUES (1, "American Idiot", 2.99, 1, 1);
+INSERT INTO music VALUES (2, "Jesus of Suburbia", 2.99, 2, 1);
+INSERT INTO music VALUES (3, "Holiday", 2.99, 3, 1);
+INSERT INTO music VALUES (4, "Boulevard of Broken Dreams", 2.99, 4, 1);
+INSERT INTO music VALUES (5, "Are We the Waiting", 2.99, 5, 1);
+INSERT INTO music VALUES (6, "St. Jimmy", 2.99, 6, 1);
+INSERT INTO music VALUES (7, "Give Me Novacaine", 2.99, 7, 1);
+INSERT INTO music VALUES (8, "She's a Rebel", 2.99, 8, 1);
+INSERT INTO music VALUES (9, "Extraordinary Girl", 2.99, 9, 1);
+INSERT INTO music VALUES (10, "Letterbomb", 2.99, 10, 1);
+INSERT INTO music VALUES (11, "Wake Me Up When September Ends", 3.99, 11, 1);
+INSERT INTO music VALUES (12, "Homecoming", 2.99, 12, 1);
+INSERT INTO music VALUES (13, "Whatshername", 2.99, 13, 1);
+
+INSERT INTO music VALUES (14, "Breaking the Law", 1.99, 1,2);
+INSERT INTO music VALUES (15, "Rapid Fire", 1.99, 2,2);
+INSERT INTO music VALUES (16, "Metal Gods", 1.99, 3,2);
+INSERT INTO music VALUES (17, "Grinder", 1.99, 4,2);
+INSERT INTO music VALUES (18, "United", 1.99, 5,2);
+INSERT INTO music VALUES (19, "Living After Midnight", 1.99, 6,2);
+INSERT INTO music VALUES (20, "Don't Have to Be Old to Be Wise", 1.99, 7,2);
+INSERT INTO music VALUES (21, "The Rage", 1.99, 8,2);
+INSERT INTO music VALUES (22, "Steeler", 1.99, 9, 2);
