@@ -10,7 +10,6 @@
         <thead>
             <tr>
                 <th> Song Name</th>
-                <th> Album Name</th>
                 <th> Track Number</th>
                 <th > Price</th>
             </tr>
@@ -18,7 +17,6 @@
     <tbody>
         <tr th:each="music, iStat : ${music}" >
             <td th:text="${music.name}" />
-            <td th:text="${music.album.name}" />
             <td th:text="${music.trackNumber}" />
             <td th:text="${music.price}" />
         </tr>
