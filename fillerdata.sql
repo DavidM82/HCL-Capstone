@@ -8,6 +8,9 @@ grant all on capstone.* to 'capstone'@'%';
 
 -- SELECT m.name, m.track_number, a.name, a.artist FROM MUSIC m JOIN ALBUM a ON m.album_id = a.id WHERE a.id = 2;
 
+INSERT INTO USER (id, username, email, password) VALUES (1, 'Bob', 'bob@mail.net', '$2y$12$IUrHjs5tRVqIZhJt7uk6Su3uJIage69oGaY6FDGk68l2kw4pgS9WO'); -- password is "secret"
+INSERT INTO USER (id, username, email, password) VALUES (2, 'Alice', 'alice@mail.net', '$2y$12$EHw2LrcEVjVNma4Jm3RqJ..GXAhOhcdgKqzpmC/g3ei4b/JW5CyiG'); -- password is "hidden"
+
 INSERT INTO genre VALUES (1, "Alternative Rock");
 INSERT INTO genre VALUES (2, "Heavy Metal");
 

@@ -1,0 +1,24 @@
+Tasks to get done:
+
+	- Display all music to user
+		- Front-end
+			-Search functionality
+				- Search should name and category, artist, album, price, product
+		- Back-end functionality showing genre/album/music/product
+		
+	- Allow admin to CRUD genre, album, music, product
+		- Requires front-end views showing all g/a/m/p
+		- Back-end functionality needed (like UserManager)
+
+	- Set up log-in when user attempts to do certain things
+		- should be prompted for log-in page, admin view and controls,shopping cart 
+		- log out page
+		
+	- Allow user to buy music
+		- Create shopping cart
+		- Store user's credit card's information for later purchases
+		- Create form for check-out
+
+
+FRIDAY TASKS:
+	-Adding Indexes to Tables
