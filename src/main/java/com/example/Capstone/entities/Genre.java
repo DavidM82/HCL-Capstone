@@ -1,18 +1,26 @@
 package com.example.Capstone.entities;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
-@Entity
 @Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Genre {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
+    int id;
 
-    private String Name;
+    @Column(name= "genre_name")
+    String genreName;
 
+    @Column(name="image")
+    String image;
 }
