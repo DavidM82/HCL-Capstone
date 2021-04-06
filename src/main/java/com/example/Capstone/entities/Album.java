@@ -1,31 +1,46 @@
 package com.example.Capstone.entities;
 
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
-@Entity
 @Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Album {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
+	int id;
+	
+	@Column(name="album_name")
+	String albumName;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+	public int getId() {
+		return id;
+	}
 
-    private String Name;
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    @ManyToOne
-    private Genre genre;
+	public String getAlbumName() {
+		return albumName;
+	}
 
-    private String artist;
-
-    private Date releaseDate;
-
-    private BigDecimal price;
-
+	public void setAlbumName(String albumName) {
+		this.albumName = albumName;
+	}
+	
+	
 
 }
