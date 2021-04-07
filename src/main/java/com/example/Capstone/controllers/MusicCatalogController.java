@@ -1,4 +1,4 @@
-package com.example.Capstone.controllers;
+	package com.example.Capstone.controllers;
 
 import com.example.Capstone.entities.Music;
 import com.example.Capstone.services.MusicService;
@@ -28,6 +28,13 @@ public class MusicCatalogController {
 
         model.addAttribute("music", musicService.GetAllMusic());
         return "music_catalog";
+    }
+    
+    
+    @RequestMapping(value= "/newuser")
+    public String userRegistration() {
+    	
+    	return "newUser";
     }
 
 

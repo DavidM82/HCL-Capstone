@@ -24,15 +24,6 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
     	PasswordEncoder encoder = 
           PasswordEncoderFactories.createDelegatingPasswordEncoder();
     	auth.userDetailsService(userdetails).passwordEncoder(passwordEncoder());
-
-//    	.inMemoryAuthentication()
-//          .withUser("user")
-//          .password(encoder.encode("password"))
-//          .roles("USER")
-//          .and()
-//          .withUser("admin")
-//          .password(encoder.encode("admin"))
-//          .roles("USER", "ADMIN");
     }
 	
 	@Bean
