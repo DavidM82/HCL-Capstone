@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer Manager</title>
+</head>
+<body>
+
+<h2>Edit User</h2>
+
+	<table style="float: left">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>Credit Card</th>
+			<th>Expiration Date</th>
+			
+		</tr>
+		<c:forEach items="${user}" var="user" varStatus="count">
+			<tr id="${count.index}">
+				<td>${user.id}</td>
+				<td>${user.name}</td>
+				<td>${user.email}</td>
+				<td>${user.password}</td>
+				<td>${user.creditcard}</td>
+				<td>${user.expiration_date}</td>
+				
+			</tr>
+		</c:forEach>
+	</table>
+	<form action="/edit" method="post">
+	<br><br><br>
+
+		<label for="name">Name: </label> <input type="text" id="name" name="name"><br> <br> 
+			
+		<label for="email">Email:</label><input type="text" id="email" name="email"><br> <br>
+		
+		<label for="password">Password:</label> <input type="text" id="password" name="password"><br> <br> 
+		
+		<label for="creditcard">Credit Card:</label> <input type="text" id="creditcard" name="creditcard"><br> <br>
+		
+		<label for="expiration_date">Expiration Date:</label> <input type="text" id="expiration_date" name="expiration_date"><br> <br>
+		
+		<input
+			type="submit" value="Enter">
+	</form>
+	<a href="AdminPage">Back</a>
+
+</body>
+</html>

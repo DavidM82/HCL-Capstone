@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Audio dB Register a New User:</title>
+    <link rel="stylesheet" href="styles.css"></link>
+</head>
+
+<body>
+	
+		${user }
+		<form id="newUser" action="/userRegisterSuccess" method="post">
+			<h2>Register Customer</h2>
+			<h5>Please fill in your Information Below!</h5>
+			<br>
+			<h5>Basic Info</h5>
+			<table style="width: 100%">
+				
+				<tr>
+					<td>UserName</td>
+					<td><input type="text" name="userName" required /></td>
+				</tr>
+				
+				<tr>
+					<td>Password</td>
+					<td><input type="text" name="password" required /></td>
+				</tr>
+				
+				<tr>
+					<td>Email</td>
+					<td><input type="text" name="email" required /></td>
+				</tr>
+			
+				</table>
+				<h5>Billing Information</h5>
+				<table style="width: 100%">
+				<tr>
+					<td>Address</td>
+					<td><input type="text" name="address" required /></td>
+				</tr>
+			
+				<tr>
+					<td>City</td>
+					<td><input type="text" name="city" required /></td>
+				</tr>
+				
+				<tr>
+					<td>State</td>
+					<td><input type="text" name="state" required /></td>
+				</tr>
+				
+				<tr>
+					<td>Zipcode</td>
+					<td><input type="text" name="zipcode" required /></td>
+				</tr>
+				
+				<tr>
+					<td>Credit Card</td>
+					<td><input type="text" name="creditcard" required /></td>
+				</tr>
+				
+				<tr>
+					<td>Expiration Date</td>
+					<td><input type="text" name="expiration_date" required /></td>
+				</tr>
+			</table>
+			<input type="submit" value="newUser" />
+		</form>
+</body>
+</html>
