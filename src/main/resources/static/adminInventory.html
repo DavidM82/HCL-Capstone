@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Inventory</title>
+</head>
+<body>
+
+<h2>Product Manager</h2>
+
+	<table style="float: left">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Category</th>
+			<th>Description</th>
+			<th>Image</th>
+			<th>Product Name</th>
+			<th>Category ID</th>
+			
+		</tr>
+		<c:forEach items="${product}" var="product" varStatus="count">
+			<tr id="${count.index}">
+				<td>${product.id}</td>
+				<td>${product.itemName}</td>
+				<td>${product.price}</td>
+				<td>${product.category}</td>
+				<td>${product.description}</td>
+				<td>${product.image}</td>
+				<td>${product.product_name}</td>
+				<td>${product.category_id}</td>
+				
+			</tr>
+		</c:forEach>
+	</table>
+	<form action="/edit" method="post">
+	<br><br><br>
+
+		<label for="name">Name: </label> <input type="text" id="name" name="name"><br> <br> 
+			
+		<label for="price">Price:</label><input type="text" id="price" name="price"><br> <br>
+		
+		<label for="category">Category:</label> <input type="text" id="category" name="category"><br> <br> 
+		
+		<label for="description">Description:</label> <input type="text" id="description" name="description"><br> <br>
+		
+		<label for="product_name">Product Name:</label> <input type="text" id="product_name" name="product_name"><br> <br>
+		
+		<input
+			type="submit" value="Enter">
+	</form>
+	
+	<form action="/add" method="post">
+	<br><br><br>
+
+		<label for="name">Name: </label> <input type="text" id="name" name="name"><br> <br> 
+			
+		<label for="price">Price:</label><input type="text" id="price" name="price"><br> <br>
+		
+		<label for="category">Category:</label> <input type="text" id="category" name="category"><br> <br> 
+		
+		<label for="description">Description:</label> <input type="text" id="description" name="description"><br> <br>
+		
+		<label for="product_name">Product Name:</label> <input type="text" id="product_name" name="product_name"><br> <br>
+		
+		<input
+			type="submit" value="Enter">
+	</form>
+	<a href="AdminPage">Back</a>
+
+</body>
+</html>
