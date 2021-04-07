@@ -26,6 +26,8 @@ public class User {
 	
 	private String email;
 	
+	private boolean isAdmin;
+	
 	public Long getId() {
 		return id;
 	}
@@ -73,8 +75,12 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
-	
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 }

@@ -7,12 +7,14 @@ grant all on capstone.* to 'capstone'@'%';
 */
 
 -- SELECT m.name, m.track_number, a.name, a.artist FROM MUSIC m JOIN ALBUM a ON m.album_id = a.id WHERE a.id = 2;
--- SELECT * FROM USER
--- SELECT * FROM SHOPPING_CART;
+-- SELECT * FROM MUSIC;
+-- SELECT * FROM USER;
 -- INSERT INTO SHOPPING_CART (id, user_id, music_id, album_id, product_id) VALUES (1, 1, 4, NULL, NULL); 
 
-INSERT INTO USER (id, username, email, password) VALUES (1, 'Bob', 'bob@mail.net', '$2y$12$IUrHjs5tRVqIZhJt7uk6Su3uJIage69oGaY6FDGk68l2kw4pgS9WO'); -- password is "secret"
-INSERT INTO USER (id, username, email, password) VALUES (2, 'Alice', 'alice@mail.net', '$2y$12$EHw2LrcEVjVNma4Jm3RqJ..GXAhOhcdgKqzpmC/g3ei4b/JW5CyiG'); -- password is "hidden"
+INSERT INTO USER (id, username, email, password, is_admin) VALUES (1, 'Bob', 'bob@mail.net', '$2y$12$IUrHjs5tRVqIZhJt7uk6Su3uJIage69oGaY6FDGk68l2kw4pgS9WO', false); -- password is "secret"
+INSERT INTO USER (id, username, email, password, is_admin) VALUES (2, 'Alice', 'alice@mail.net', '$2y$12$EHw2LrcEVjVNma4Jm3RqJ..GXAhOhcdgKqzpmC/g3ei4b/JW5CyiG', true); -- password is "hidden"
+
+
 
 INSERT INTO genre VALUES (1, "Alternative Rock", NULL);
 INSERT INTO genre VALUES (2, "Heavy Metal", NULL);
