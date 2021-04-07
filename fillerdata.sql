@@ -7,15 +7,18 @@ grant all on capstone.* to 'capstone'@'%';
 */
 
 -- SELECT m.name, m.track_number, a.name, a.artist FROM MUSIC m JOIN ALBUM a ON m.album_id = a.id WHERE a.id = 2;
+-- SELECT * FROM USER
+-- SELECT * FROM SHOPPING_CART;
+-- INSERT INTO SHOPPING_CART (id, user_id, music_id, album_id, product_id) VALUES (1, 1, 4, NULL, NULL); 
 
 INSERT INTO USER (id, username, email, password) VALUES (1, 'Bob', 'bob@mail.net', '$2y$12$IUrHjs5tRVqIZhJt7uk6Su3uJIage69oGaY6FDGk68l2kw4pgS9WO'); -- password is "secret"
 INSERT INTO USER (id, username, email, password) VALUES (2, 'Alice', 'alice@mail.net', '$2y$12$EHw2LrcEVjVNma4Jm3RqJ..GXAhOhcdgKqzpmC/g3ei4b/JW5CyiG'); -- password is "hidden"
 
-INSERT INTO genre VALUES (1, "Alternative Rock");
-INSERT INTO genre VALUES (2, "Heavy Metal");
+INSERT INTO genre VALUES (1, "Alternative Rock", NULL);
+INSERT INTO genre VALUES (2, "Heavy Metal", NULL);
 
-INSERT INTO album VALUES (1, "American Idiot", "Green Day", 14.99, '2004-09-21', 1);
-INSERT INTO album VALUES (2, "British Steel", "Judas Priest", 9.99, "1980-04-14", 2);
+INSERT INTO album VALUES (1, "American Idiot", "Green Day", 1);
+INSERT INTO album VALUES (2, "British Steel", "Judas Priest", 2);
 
 INSERT INTO music VALUES (1, "American Idiot", 2.99, 1, 1);
 INSERT INTO music VALUES (2, "Jesus of Suburbia", 2.99, 2, 1);
