@@ -53,5 +53,13 @@ public class AdminController {
 		model.addAttribute("product", product);
 		
 		return "adminInventory";
+		
+		
 	}
+	
+	@GetMapping("/adminOrders")
+	public String showAdminOrders() {
+		return "adminOrders";
+	}
+	
 }

@@ -16,8 +16,8 @@ public class Music {
 
     private String name;
 
-    @ManyToOne
-    private Album album;
+    //@ManyToOne
+    //private Album album;
 
     private int trackNumber;
 
@@ -39,13 +39,13 @@ public class Music {
 		this.name = name;
 	}
 
-	public Album getAlbum() {
-		return album;
-	}
+	//public Album getAlbum() {
+//		return album;
+//	}
 
-	public void setAlbum(Album album) {
-		this.album = album;
-	}
+	//public void setAlbum(Album album) {
+	//	this.album = album;
+	//}
 
 	public int getTrackNumber() {
 		return trackNumber;
