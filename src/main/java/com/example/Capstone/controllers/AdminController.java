@@ -2,6 +2,7 @@ package com.example.Capstone.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -32,4 +33,9 @@ public class AdminController {
 		return ResponseEntity.badRequest().body("Wrong credentials");
 	}
 
+	
+	@GetMapping("/admin")
+	public String showAdmin() {
+		return "adminHome";
+	}
 }
