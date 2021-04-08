@@ -1,0 +1,50 @@
+!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>View Customer Orders</title>
+   
+</head>
+
+<body>
+
+<div class="container" align="center">
+    <div class="panel-body">
+        <h1>View Customer Orders</h1>
+        <form id="product" action="/adminHome" method="post">
+            <table>
+                <tr>
+                    <th>User ID</th>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Unit Price in $</th>
+                    <th>Quantity</th>
+                    <th>Price in $</th>
+                    <th>Status</th>
+                    <th style="text-align: center;">Update</th>
+                </tr>
+                <c:forEach items="${product}" var="product" varStatus="count">
+			<tr id="${count.index}">
+				<td>${product.id}</td>
+				<td>${product.itemName}</td>
+				<td>${product.price}</td>
+				<td>${product.category}</td>
+				<td>${product.description}</td>
+<!-- 				<td>${product.image}</td> -->
+				<td>${product.product_name}</td>
+				<td>${product.category_id}</td>
+                        <td style="text-align: center;"><a type="button"
+                               href="/adminHome">Home</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+
+</body>
+</html>
