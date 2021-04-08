@@ -1,8 +1,11 @@
 package com.example.Capstone.services;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.example.Capstone.entities.Music;
 import com.example.Capstone.repositories.MusicRepository;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,8 @@ import java.util.Optional;
 @Service
 public class MusicService {
 
+	private static Logger logger = LoggerFactory.getLogger(MusicService.class);
+	
     @Autowired
     private MusicRepository MusicRepository;
 
@@ -41,6 +46,18 @@ public class MusicService {
 
         return (foundMusic);
     }
+    
+    public Music findByMusicName(String name) throws Exception {
+		
+		Music music = MusicRepository.findMusicByName(name);
+		if (music != null) {
+			logger.info("album: " + music.toString());
+			return music;
+		}
+		
+		logger.error("song is null");
+		throw new Exception("Song not found");
+	}
 
     public Music AddMusic(Music Music) {
         return MusicRepository.save(Music);

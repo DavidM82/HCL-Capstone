@@ -5,6 +5,8 @@ import com.example.Capstone.services.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +39,11 @@ public class MusicCatalogController {
     	return "newUser";
     }
 
+    @GetMapping("/musicname/{name}")
+	public String searchMusicByName(@PathVariable String name) throws Exception {
+		 musicService.findByMusicName(name);
+		 return "music_catalog";
+	}
 
 
 }
