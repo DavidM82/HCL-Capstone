@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+	  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <style>
 * {box-sizing: border-box;}
 
@@ -84,14 +86,27 @@ body {
 </head>
 <body>
 
+
+
+
+<form th:action="@{/musicname}">
+    Filter: <input type="text" name="name" size="50" th:value="${name}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
+
+
+<!-- 
 <div class="topnav">
   <div class="search-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
+    <form action="/musicname">
+      <input type="text" placeholder="Search.." name=${music.name}>
+      <button type="submit"?name=${music.name}><i class="fa fa-search"></i></button>
     </form>
   </div>
-</div>
+</div> -->
 
 <h2>Product Manager</h2>
 
