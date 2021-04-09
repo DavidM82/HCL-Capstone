@@ -62,4 +62,9 @@ public class AdminController {
 		return "adminOrders";
 	}
 	
+	@GetMapping("/adminCreateItem")
+	public String adminCreate() {
+		return "adminCreateItem";
+	}
+	
 }
