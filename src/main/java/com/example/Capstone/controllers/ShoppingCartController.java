@@ -39,6 +39,12 @@ public class ShoppingCartController {
 		shoppingCartService.saveMusic(music);
 	}
 	
+	@GetMapping("/deleteshoppingitem/{id}")
+	public String deleteShoppingItem(@PathVariable("id") int id) {
+		shoppingCartService.deleteItem(id);
+		return "shoppingcart";
+	}
+	
 	@GetMapping("/shoppingcart")
 	public String getShoppingCart(Model model) {
 		ArrayList<Item> items = (ArrayList<Item>) shoppingCartService.showItems();
@@ -54,15 +60,38 @@ public class ShoppingCartController {
 	
 	@PostMapping("/checkout")
 	public String getCheckOut(Model model, @RequestParam("totalcost") BigDecimal total) {
-		
+		User user = userService.getUser();
+		if (user.getExperation_date() == 0) {
+			model.addAttribute("month", 0);
+			model.addAttribute("year", 2020);
+		} else {
+			String date = Integer.toString(user.getExperation_date());
+			String monthStr, yearStr;
+			if (date.length() == 5) {
+				monthStr = date.substring(0,1);
+				yearStr = date.substring(1);
+			} else {
+				monthStr = date.substring(0, 2);
+				yearStr = date.substring(2);
+			}
+			model.addAttribute("month", monthStr);
+			model.addAttribute("year", yearStr);
+		}
+		model.addAttribute("credit", user.getCreditcard());
+		model.addAttribute("name", user.getUsername());
 		model.addAttribute("total", total);
-		model.addAttribute("user", userService.getUser());
 		return "checkout";
 	}
 	
 	@PostMapping("/buy")
-	public String purchase() {
+	public String purchase(@RequestParam("credit") long credit, @RequestParam("savePurchase") boolean save,
+							@RequestParam("expiration_month") int month, @RequestParam("expiration_year") int year) {
+		
 		shoppingCartService.purchase();
+		if (save) {
+			userService.setCreditCard(credit, month, year);
+		}
+		
 		return "shopping_cart";
 	}
 }

@@ -5,14 +5,23 @@ import java.math.BigDecimal;
 //Do not set as Entity, will not be stored in database
 public class Item {
 
+	private long id;
 	private String name;
 	private BigDecimal price;
 	
-	public Item(String name, BigDecimal price) {
+	public Item(long id, String name, BigDecimal price) {
+		this.id = id;
 		this.name = name;
 		this.price = price;
 	}
 
+	public long getId() {
+		return this.id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

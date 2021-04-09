@@ -11,10 +11,16 @@ grant all on capstone.* to 'capstone'@'%';
 -- SELECT * FROM USER;
 -- INSERT INTO SHOPPING_CART (id, user_id, music_id, album_id, product_id) VALUES (1, 1, 4, NULL, NULL); 
 
+SELECT * FROM CATEGORY;
+INSERT INTO CATEGORY VALUES (1, 'Instruments', NULL);
+
 INSERT INTO USER (id, username, email, password, is_admin) VALUES (1, 'Bob', 'bob@mail.net', '$2y$12$IUrHjs5tRVqIZhJt7uk6Su3uJIage69oGaY6FDGk68l2kw4pgS9WO', false); -- password is "secret"
 INSERT INTO USER (id, username, email, password, is_admin) VALUES (2, 'Alice', 'alice@mail.net', '$2y$12$EHw2LrcEVjVNma4Jm3RqJ..GXAhOhcdgKqzpmC/g3ei4b/JW5CyiG', true); -- password is "hidden"
 
-
+SELECT * FROM shopping_cart;
+INSERT INTO shopping_cart VALUES (1, 1, null, 1);
+INSERT INTO shopping_cart VALUES (2,2, null, 1);
+INSERT INTO shopping_cart VALUES (3,4, null, 1);
 
 INSERT INTO genre VALUES (1, "Alternative Rock", NULL);
 INSERT INTO genre VALUES (2, "Heavy Metal", NULL);

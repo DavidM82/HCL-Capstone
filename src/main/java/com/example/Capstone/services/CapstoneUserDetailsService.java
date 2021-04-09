@@ -31,4 +31,16 @@ public class CapstoneUserDetailsService implements UserDetailsService {
 	public User getUser() {
 		return user;
 	}
+	
+	public void setCreditCard(long creditcard, int month, int year) {
+		user.setCreditcard(creditcard);
+		String monthStr = Integer.toString(month);
+		
+		String yearStr = Integer.toString(year);
+		String dateStr = monthStr+yearStr;
+		int expirationdate = Integer.parseInt(dateStr);
+		user.setExperation_date(expirationdate);
+		
+		userRepo.save(user);
+	}
 }

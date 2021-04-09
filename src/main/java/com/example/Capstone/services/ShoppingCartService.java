@@ -34,6 +34,10 @@ public class ShoppingCartService {
 		cartRepo.save(newItem);
 	}
 	
+	public void deleteItem(int id) {
+		cartRepo.deleteById(id);
+	}
+	
 	public void saveProduct(Product product) {
 		ShoppingCart newItem = new ShoppingCart();
 		newItem.setProduct(product);
@@ -60,9 +64,9 @@ public class ShoppingCartService {
 		 for (ShoppingCart i: cart) {
 			 Item j = null;
 			 if (i.getMusic() == null) {
-				 j = new Item(i.getProduct().getProductName(), i.getProduct().getPrice());
+				 j = new Item(i.getId(), i.getProduct().getProductName(), i.getProduct().getPrice());
 			 } else {
-				 j = new Item(i.getMusic().getName(), i.getMusic().getPrice());
+				 j = new Item(i.getId(), i.getMusic().getName(), i.getMusic().getPrice());
 			 }
 			 items.add(j);
 		 }

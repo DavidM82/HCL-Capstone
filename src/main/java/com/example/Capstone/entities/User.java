@@ -22,7 +22,7 @@ public class User {
 	private long creditcard; 
 	
 	@Column(columnDefinition = "int default 0")
-	private int experation_date;
+	private int experation_date; //Stored as MMyyyy
 	
 	private String email;
 	

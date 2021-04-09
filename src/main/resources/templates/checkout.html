@@ -6,12 +6,16 @@
 <body>
 	<h2>Checkout</h2>
 
-	<p>Your total is <strong th:text="${total}"></strong></p>
+	<p>Your total is $<strong th:text="${total}"></strong></p>
+	<a href="/shoppingcart">Go back to shopping cart?</a>
 
-	<form action="buy" method="post" th:object="${user}">	
-		<h4>Billing Address</h4>
-		<input type="text" th:field="*{creditcard}" required>
-		
+	<form action="buy" method="post">	
+		<h4>Billing Information</h4>
+		<label>Name: </label> <input type="text" id="name" th:value="${name}" required> <br />
+		<label>Credit Card: </label><input type="number" min="1000000000000000" max="9999999999999999" th:name="credit" th:value="${credit}" required> <br />
+		<label>Expiration Month: </label><input type="number" th:name="expiration_month" min="1" max="12" th:value="${month}" required> <br />
+		<label>Expiration Year: </label><input type="number" th:name="expiration_year" min="2021" max="2040" th:value="${year}" required> <br />
+		<label>Save purchase method?</label><input type="checkbox" th:name="savePurchase"> <br />
 		<input type="submit" value="Buy">
 	</form>
 </body>
