@@ -30,11 +30,12 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
-			.antMatchers("/", "/music_catalog").access("hasRole('ROLE_USER')")
+			.antMatchers("/", "/music_catalog", "/shoppingcart", "/checkout").access("hasRole('ROLE_USER')")
 			.antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
 			.and()
 				.formLogin()
 				.defaultSuccessUrl("/");
+		http.csrf().disable(); //Should allow POST to work	
 	}
 	
 	@Bean

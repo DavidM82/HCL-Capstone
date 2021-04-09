@@ -16,13 +16,19 @@ public class CapstoneUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepo;
 	
+	private User user;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepo.findByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException(username);
 		}
+		this.user = user;
 		return new CapstoneUserPrincipal(user);
 	}
-
+	
+	public User getUser() {
+		return user;
+	}
 }
