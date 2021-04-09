@@ -52,6 +52,11 @@ public class MusicCatalogController {
 		 map.addAttribute("music", listMusic);
 		 return "music_catalog";
 	}
+    
+    @GetMapping("/toIndex")
+    public String toIndex() {
+    	return "index";
+    }
 
 
 }
