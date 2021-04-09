@@ -16,8 +16,8 @@ public class Music {
 
     private String name;
 
-    //@ManyToOne
-    //private Album album;
+    @ManyToOne
+    private Album album;
 
     private int trackNumber;
 

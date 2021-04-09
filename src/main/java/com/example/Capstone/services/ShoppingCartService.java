@@ -11,6 +11,7 @@ import com.example.Capstone.entities.Music;
 import com.example.Capstone.entities.Product;
 import com.example.Capstone.entities.ShoppingCart;
 import com.example.Capstone.entities.User;
+import com.example.Capstone.repositories.MusicRepository;
 import com.example.Capstone.repositories.ShoppingCartRepository;
 
 @Service
@@ -18,6 +19,9 @@ public class ShoppingCartService {
 
 	@Autowired
 	ShoppingCartRepository cartRepo;
+	
+	@Autowired
+	MusicRepository musicRepo;
 	
 	@Autowired
 	CapstoneUserDetailsService userService;
@@ -39,7 +43,10 @@ public class ShoppingCartService {
 	}
 	
 	public void saveAlbum(Album album) {
-		//pull all Music objects with this album, loop through Musics saving them.
+		Iterable<Music> musics = musicRepo.findAllByAlbum(album);
+		for (Music i: musics) {
+			this.saveMusic(i);
+		}
 	}
 	
 	public void purchase() {
