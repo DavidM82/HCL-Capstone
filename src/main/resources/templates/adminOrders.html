@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
@@ -8,8 +8,14 @@
 </head>
 
 <body>
+     <link rel="stylesheet" href="../static/styles/styles.css"></link>
 
-<div class="container" align="center">
+<div class= "wrapper">
+<img src="../static/images/audioDB.png" alt="picture">
+</div>
+
+
+<div class="container" align="left">
     <div class="panel-body">
         <h1>View Customer Orders</h1>
         <form id="product" action="/adminOrders" method="post">
