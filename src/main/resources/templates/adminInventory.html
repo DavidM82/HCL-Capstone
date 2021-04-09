@@ -86,11 +86,14 @@ body {
 </head>
 <body>
 
+     <link rel="stylesheet" href="../static/styles/styles.css"></link>
 
-
+<div class= "wrapper">
+<img src="../static/images/audioDB.png" alt="picture">
+</div>
 
 <form th:action="@{/musicname}">
-    Filter: <input type="text" name="name" size="50" th:value="${name}" required />
+   <h2> Search Available Songs:</h2> <input type="text" name="name" size="50" th:value="${name}" required />
     &nbsp;
     <input type="submit" value="Search" />
     &nbsp;
