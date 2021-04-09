@@ -35,7 +35,7 @@ public class UserSecurity extends WebSecurityConfigurerAdapter {
 			.and()
 				.formLogin()
 				.defaultSuccessUrl("/");
-		http.csrf().disable(); //Should allow POST to work
+		http.csrf().disable(); //Should allow POST to work	
 	}
 	
 	@Bean
