@@ -25,7 +25,7 @@ public class CapstoneUserPrincipal implements UserDetails {
 		
 		return AuthorityUtils.createAuthorityList("ROLE_USER");
 	}
-
+	
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub

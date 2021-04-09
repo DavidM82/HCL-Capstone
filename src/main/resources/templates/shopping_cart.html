@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../static/styles/styles.css" />
+</head>
+<body>
+    <h2>Shopping Cart</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item, iStat: ${item}">
+                <td th:text="${item.name}" />
+                <td th:text="${item.price}" />
+            </tr>
+        </tbody>
+    </table> <br />
+    
+    <form>
+    	<label>Total cost: </label> <input type="number" th:value="${total}" readonly />
+    	<br />
+    	<input type="submit" value="Proceed to checkout">
+    </form>
+
+</body>
+</html>
