@@ -20,5 +20,8 @@ Tasks to get done:
 		- Create form for check-out
 
 
-FRIDAY TASKS:
-	-Adding Indexes to Tables
+WEEKEND TASKS:
+	Get User Registration to work
+	Get Admin Song Management to work
+	Get Links in Homepage as needed
+	Finish Documentation
