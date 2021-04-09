@@ -15,6 +15,7 @@ import com.example.Capstone.entities.Item;
 import com.example.Capstone.entities.Music;
 import com.example.Capstone.entities.Product;
 import com.example.Capstone.entities.User;
+import com.example.Capstone.services.CapstoneUserDetailsService;
 import com.example.Capstone.services.ShoppingCartService;
 
 @Controller
@@ -24,6 +25,9 @@ public class ShoppingCartController {
 	
 	@Autowired
 	ShoppingCartService shoppingCartService;
+	
+	@Autowired
+	CapstoneUserDetailsService userService;
 	
 	@PostMapping("/saveproductincart")
 	public void saveProductInCart(@RequestBody Product product, User user) {
@@ -48,4 +52,17 @@ public class ShoppingCartController {
 		return "shopping_cart";
 	}
 	
+	@PostMapping("/checkout")
+	public String getCheckOut(Model model, @RequestParam("totalcost") BigDecimal total) {
+		
+		model.addAttribute("total", total);
+		model.addAttribute("user", userService.getUser());
+		return "checkout";
+	}
+	
+	@PostMapping("/buy")
+	public String purchase() {
+		shoppingCartService.purchase();
+		return "shopping_cart";
+	}
 }

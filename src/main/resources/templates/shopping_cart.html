@@ -22,8 +22,8 @@
         </tbody>
     </table> <br />
     
-    <form>
-    	<label>Total cost: </label> <input type="number" th:value="${total}" readonly />
+    <form action="checkout" method="post">
+    	<label>Total cost: </label> <input type="number" th:name="totalcost" th:value="${total}" readonly />
     	<br />
     	<input type="submit" value="Proceed to checkout">
     </form>
