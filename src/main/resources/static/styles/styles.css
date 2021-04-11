@@ -1,9 +1,9 @@
 body {
-	background-color: #123456;
+	background-color: rgb(119, 210, 255);
 }
 
 .wrapper{
-	margin: 0 auto;
+	margin: 0px;
 	width: 1000px;
 	
 }
@@ -11,5 +11,18 @@ body {
 .logo{
 	
 	width: 300px;
+	
+}
+
+
+.registerCust{
+	margin: 0px;
+	width: 680px;
+	
+}
+
+.billing{
+	margin: 0px;
+	width: 525px;
 	
 }

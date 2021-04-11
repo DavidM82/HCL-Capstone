@@ -33,7 +33,7 @@ public class MusicCatalogController {
         Iterable<Music> Music = musicService.GetAllMusic();
 
         model.addAttribute("music", musicService.GetAllMusic());
-        return "music_catalog";
+        return "userHomePage";
     }
     
     
@@ -53,6 +53,11 @@ public class MusicCatalogController {
 		 map.addAttribute("music", listMusic);
 		 return "music_catalog";
 	}
+    
+    @GetMapping("/toIndex")
+    public String toIndex() {
+    	return "index";
+    }
 
 
 }
