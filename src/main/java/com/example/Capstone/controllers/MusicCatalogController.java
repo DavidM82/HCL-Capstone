@@ -47,6 +47,7 @@ public class MusicCatalogController {
 	public String searchMusicByName(@RequestParam String name, ModelMap map) throws Exception {
 		 Music music = musicService.findByMusicName(name);
 		 
+		 
 		 List<Music> listMusic = new ArrayList<>(); 
 		 listMusic.add(music);
 		 map.addAttribute("music", listMusic);
