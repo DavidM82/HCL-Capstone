@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.Capstone.entities.User;
@@ -15,6 +16,9 @@ public class CapstoneUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	private User user;
 	
@@ -32,7 +36,7 @@ public class CapstoneUserDetailsService implements UserDetailsService {
 		return user;
 	}
 	
-	public void setCreditCard(long creditcard, int month, int year) {
+	public void updateCreditCard(long creditcard, int month, int year) {
 		user.setCreditcard(creditcard);
 		String monthStr = Integer.toString(month);
 		
@@ -43,4 +47,26 @@ public class CapstoneUserDetailsService implements UserDetailsService {
 		
 		userRepo.save(user);
 	}
+	
+	//Prepares the User object for saving
+	public User prepUserForSave(User newuser, long creditcard, int month, int year) {
+		newuser.setCreditcard(creditcard);
+		String monthStr = Integer.toString(month);
+		
+		String yearStr = Integer.toString(year);
+		String dateStr = monthStr+yearStr;
+		int expirationdate = Integer.parseInt(dateStr);
+		newuser.setExperation_date(expirationdate);
+		
+		newuser.setPassword(passwordEncoder.encode(newuser.getPassword()));
+		
+		newuser.setAdmin(false);
+		
+		return newuser;
+	}
+	
+	 public User updateAndSaveUser(User user){
+	        return userRepo.save(user);
+	 }
+
 }

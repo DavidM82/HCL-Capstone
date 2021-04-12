@@ -36,12 +36,6 @@ public class MusicCatalogController {
         return "userHomePage";
     }
     
-    
-    @RequestMapping(value= "/newuser")
-    public String userRegistration() {
-    	
-    	return "newUser";
-    }
 
     @GetMapping("/musicname")
 	public String searchMusicByName(@RequestParam String name, ModelMap map) throws Exception {

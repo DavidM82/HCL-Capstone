@@ -92,15 +92,15 @@ body {
 <img src="../static/images/audioDB.png" alt="picture">
 </div>
 
-<!-- 
-<div class="topnav">
-  <div class="search-container">
-    <form action="/musicname">
-      <input type="text" placeholder="Search.." name=${music.name}>
-      <button type="submit"?name=${music.name}><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div> -->
+<form th:action="@{/Adminmusicname}">
+<br>
+   <h2> Search Available Songs:</h2> <input type="text" name="name" size="50" th:value="${name}" />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
+
 
 	<br><br><a href="/admin">Back to admin</a><br>
 

@@ -107,7 +107,7 @@ public class ShoppingCartController {
 		
 		shoppingCartService.purchase();
 		if (save) {
-			userService.setCreditCard(credit, month, year);
+			userService.updateCreditCard(credit, month, year);
 		}
 		
 		return "shopping_cart";

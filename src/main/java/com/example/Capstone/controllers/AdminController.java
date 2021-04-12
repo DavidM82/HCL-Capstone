@@ -1,5 +1,7 @@
 package com.example.Capstone.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import com.example.Capstone.services.ProductService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 
 @Controller
 public class AdminController {
@@ -64,6 +67,17 @@ public class AdminController {
 		return "adminInventory";
 		
 		
+	}
+	
+    @GetMapping("/Adminmusicname")
+	public String searchMusicByName(@RequestParam String name, ModelMap map) throws Exception {
+    	Music music = musicService.findByMusicName(name);
+
+		 List<Music> listMusic = new ArrayList<>(); 
+		 listMusic.add(music);
+
+		 map.addAttribute("music", listMusic);
+		 return "adminInventory";
 	}
 	
 	@GetMapping("/adminOrders")

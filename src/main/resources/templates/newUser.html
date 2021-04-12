@@ -14,45 +14,50 @@
 <body>
 
 		<div class="registerCust">
-		<form action="save_user" method="post">
-			<h2>Register Customer</h2>
+		<form th:action="@{/save_user}" th:object="${user}" method="post">
+			<h2>Register New Customer</h2>
 			<h5>Please fill in your Information Below!</h5>
 			<br>
 			<h5>Basic Info</h5>
 			<table style="width: 100%">
 				
 				<tr>
-					<td>UserName</td>
-					<td><input type="text" name="userName" required /></td>
+					<td>User Name</td>
+					<td><input type="text" th:name="username" th:value="${user.username}" required /></td>
 				</tr>
 				
 				<tr>
 					<td>Password</td>
-					<td><input type="password" name="password" required /></td>
+					<td><input type="password" th:name="password" th:value="${user.password}" required /></td>
 				</tr>
 				
 				<tr>
 					<td>Email</td>
-					<td><input type="email" name="email" required /></td>
+					<td><input type="email" th:name="email" th:value="${user.email}" required /></td>
 				</tr>
 			
 				</table>
-			</form>
+			
 			</div>
 			
 			<div class="billing">
 				
-				<h5>Billing Information</h5>
+				<h5>Billing Information (optional)</h5>
 				<table style="width: 100%">
 				
 				<tr>
 					<td>Credit Card</td>
-					<td><input type="text" name="creditcard" required /></td>
+					<td><input type="number" min="0" max="9999999999999999" th:name="creditcard" th:value="${user.creditcard}" /></td>
 				</tr>
 				
 				<tr>
-					<td>Expiration Date</td>
-					<td><input type="text" name="expiration_date" required /></td>
+					<td>Expiration Month</td>
+					<td><input type="number" min="0" max="12" th:name="month" th:value="${month}"/></td>
+				</tr>
+				
+				<tr>
+					<td>Expiration Year</td>
+					<td><input type="number" min="2021" max="2040" th:name="year" th:value="${year}"/></td>
 				</tr>
 				
 				
@@ -61,9 +66,9 @@
 			
 			</div>
 			
-			<input type="submit" value="newUser" />
-		
-		
+			<input type="submit" value="Create new user" />
+			
+			</form>
 		<br><br><a href="/toIndex">Back</a><br>
 </body>
 </html>
