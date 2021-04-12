@@ -1,16 +1,21 @@
 package com.example.Capstone.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.Capstone.entities.Admin;
+import com.example.Capstone.entities.Music;
 import com.example.Capstone.entities.Product;
 import com.example.Capstone.services.AdminService;
+import com.example.Capstone.services.MusicService;
 import com.example.Capstone.services.ProductService;
 
 import org.springframework.stereotype.Controller;
@@ -25,6 +30,9 @@ public class AdminController {
 	@Autowired
 	ProductService productService;
 
+	@Autowired
+	MusicService musicService;
+	
 	@PostMapping(value="/admin/login")
 	public ResponseEntity<?> adminLogin(@RequestParam String username, @RequestParam String password){
 
@@ -48,9 +56,10 @@ public class AdminController {
 	@RequestMapping(value = "/adminInventory", method = RequestMethod.GET)
 	public String adminProducts(Model model) {
 		
-		Iterable<Product> product = productService.findAllProduct();
+		//Iterable<Product> product = productService.findAllProduct();
+		Iterable<Music> music = musicService.GetAllMusic();
 		
-		model.addAttribute("product", product);
+		model.addAttribute("music", music);
 		
 		return "adminInventory";
 		
@@ -60,6 +69,38 @@ public class AdminController {
 	@GetMapping("/adminOrders")
 	public String showAdminOrders() {
 		return "adminOrders";
+	}
+	
+	@GetMapping("/adminEditMusic")
+	public String editMusic(@ModelAttribute(value="editThis") Music song, Model model){
+		
+		Optional<Music> music = musicService.GetMusicById(song.getId());
+		
+		model.addAttribute("music", music.get());
+		
+		return "adminCreateItem";
+	}
+	
+	@PostMapping("/adminEditMusic")
+	public String editMusic(Model model, @ModelAttribute(value="music") Music music) {
+		
+		musicService.AddMusic(music);
+		
+		Iterable<Music> musics = musicService.GetAllMusic();
+		model.addAttribute("music", musics);
+		
+		return "adminInventory";
+	}
+	
+	@PostMapping("/adminDeleteMusic")
+	public String deleteMusic(@ModelAttribute(value="song") Music song, Model model) {
+		
+		musicService.DeleteMusic(song);
+		
+		Iterable<Music> music= musicService.GetAllMusic();
+		model.addAttribute("music", music);
+		
+		return "redirect:adminInventory";
 	}
 	
 	@GetMapping("/adminCreateItem")

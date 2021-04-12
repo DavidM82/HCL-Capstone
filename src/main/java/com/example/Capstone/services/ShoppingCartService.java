@@ -34,7 +34,7 @@ public class ShoppingCartService {
 		cartRepo.save(newItem);
 	}
 	
-	public void deleteItem(int id) {
+	public void deleteItem(long id) {
 		cartRepo.deleteById(id);
 	}
 	

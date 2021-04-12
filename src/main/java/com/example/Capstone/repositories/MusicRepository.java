@@ -6,9 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MusicRepository extends CrudRepository<Music, Integer>{
+public interface MusicRepository extends CrudRepository<Music, Long>{
 	public Music findMusicByName(String name);
-	public Music findMusicById(Integer id);
+	public Music findMusicById(Long id);
 	
 	Iterable<Music> findAllByAlbum(Album album);
 }

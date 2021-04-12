@@ -17,12 +17,19 @@
             <tr>
                 <th>Item</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="item, iStat: ${item}">
                 <td th:text="${item.name}" />
                 <td th:text="${item.price}" />
+                <td>
+                	<form th:action="@{/deleteShoppingItem}" th:object="${cartItem}" method="post">
+                		<input type="hidden" name="id" th:value="${item.id}">
+            			<button type="submit">Delete</button>
+                	</form>
+                </td>
             </tr>
         </tbody>
     </table> <br />

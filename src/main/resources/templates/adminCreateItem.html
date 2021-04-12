@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Create a New Item</title>
+    <title>Edit the Item</title>
          <link rel="stylesheet" href="../static/styles/styles.css"></link>
 </head>
 
@@ -14,30 +14,20 @@
 
     <h3>Enter The Product Details Here!</h3>
  
-    <form id="product" action="/productcreate" method="post">
-        <table style="width: 100%">
-            <tr>
-                <td>Name</td>
-                <td><input type="text" name="itemName"></td>
-            </tr>
-            
-            <tr>
-                <td>Price</td>
-                <td><input id="price" name="price"></td>
-            <tr>
-            
-            <tr>
-                <td>Category</td>
-                <td><input type="text" name="category"></td>
-            </tr>
-            <tr>
-                <td>Description</td>
-                <td><input type="text" name="description"></td>
-            </tr>
-                         
-        </table>
-        
-        <input type="submit" name="button" value="Submit"/>
+ 	<form th:action="@{/adminEditMusic}" th:object="${music}" method="post">
+        <input type="hidden" name="id" th:value="${music.id}">
+    	<input type="hidden" name="album" th:value="${music.id}">
+    	
+    	<label>Name: </label>
+    	<input type="text" name="name" th:value="${music.name}"> <br />
+    	
+    	<label>Track Number: </label>
+    	<input type="number" name="trackNumber" th:value="${music.trackNumber}"> <br />
+    	
+    	<label>Price: </label>
+    	<input type="number" name="price" th:value="${music.price}"> <br />
+    	
+    	<button type="submit">Edit</button>
     </form>
 
 <body>

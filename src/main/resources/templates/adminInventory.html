@@ -92,15 +92,6 @@ body {
 <img src="../static/images/audioDB.png" alt="picture">
 </div>
 
-<form th:action="@{/musicname}">
-   <h2> Search Available Songs:</h2> <input type="text" name="name" size="50" th:value="${name}" required />
-    &nbsp;
-    <input type="submit" value="Search" />
-    &nbsp;
-    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
-</form>
-
-
 <!-- 
 <div class="topnav">
   <div class="search-container">
@@ -111,34 +102,41 @@ body {
   </div>
 </div> -->
 
+	<br><br><a href="/admin">Back to admin</a><br>
+
 <h2>Product Manager</h2>
 
-	<table style="float: left">
-		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Price</th>
-			<th>Category</th>
-			<th>Description</th>
-<!-- 			<th>Image</th> -->
-			<th>Product Name</th>
-			<th>Category ID</th>
-			
-		</tr>
-		<c:forEach items="${product}" var="product" varStatus="count">
-			<tr id="${count.index}">
-				<td>${product.id}</td>
-				<td>${product.itemName}</td>
-				<td>${product.price}</td>
-				<td>${product.category}</td>
-				<td>${product.description}</td>
-<!-- 				<td>${product.image}</td> -->
-				<td>${product.product_name}</td>
-				<td>${product.category_id}</td>
-				
-			</tr>
-		</c:forEach>
-	</table>
+	<table border="1">
+        <thead>
+            <tr>
+                <th> Song Name</th>
+                <th> Track Number</th>
+                <th> Price</th>
+                <th colspan="2"> Actions</th>
+            </tr>
+        </thead>
+    <tbody>
+        <tr th:each="music, iStat : ${music}" >
+            <td th:text="${music.name}" />
+            <td th:text="${music.trackNumber}" />
+            <td th:text="${music.price}" />
+            <td>
+            	<form th:action="@{/adminEditMusic}" th:object="${editThis}" method="get">
+            		<input type="hidden" name="id" th:value="${music.id}">
+            		<button type="submit">Edit</button>
+            	</form>
+            </td>
+            <td>
+            	<form th:action="@{/adminDeleteMusic}" th:object="${song}" method="post">
+            		<input type="hidden" name="id" th:value="${music.id}">
+            		<button type="submit">Delete</button>
+            	</form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+	
 <!-- 	<form action="/editProduct" method="post"> -->
 <!-- 	<br><br><br> -->
 
@@ -156,10 +154,6 @@ body {
 <!-- 			type="submit" value="Enter"> -->
 <!-- 	</form> -->
 	
-	<br><br><a href="/adminCreateItem">Add Product</a><br>
-	
-	
-	<br><br><a href="/admin">Back</a><br>
 
 </body>
 </html>

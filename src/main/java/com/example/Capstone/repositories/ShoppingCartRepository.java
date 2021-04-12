@@ -9,7 +9,7 @@ import com.example.Capstone.entities.ShoppingCart;
 import com.example.Capstone.entities.User;
 
 @Repository
-public interface ShoppingCartRepository extends CrudRepository<ShoppingCart, Integer>{
+public interface ShoppingCartRepository extends CrudRepository<ShoppingCart, Long>{
 
 
 	Iterable<ShoppingCart> findAllByUser(User user);

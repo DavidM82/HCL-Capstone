@@ -113,6 +113,7 @@ body {
                 <th> Song Name</th>
                 <th> Track Number</th>
                 <th> Price</th>
+                <th> Purchase? </th>
             </tr>
         </thead>
     <tbody>
@@ -120,6 +121,12 @@ body {
             <td th:text="${music.name}" />
             <td th:text="${music.trackNumber}" />
             <td th:text="${music.price}" />
+            <td>
+            	<form th:action="@{/savemusicincart}" th:object="${item}" method="post">
+            		<input type="hidden" name="id" th:value="${music.id}">
+            		<button type="submit">Add to Cart</button>
+            	</form>
+            </td>
         </tr>
         </tbody>
     </table>

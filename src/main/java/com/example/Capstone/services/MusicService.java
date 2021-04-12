@@ -41,7 +41,7 @@ public class MusicService {
         }
         return returnList;
     }
-    public Optional<Music> GetMusicById(Integer id)  {
+    public Optional<Music> GetMusicById(Long id)  {
         Optional<Music> foundMusic = MusicRepository.findById(id);
 
         return (foundMusic);
@@ -59,12 +59,12 @@ public class MusicService {
 		throw new Exception("Song not found");
 	}
 
-    public Music AddMusic(Music Music) {
-        return MusicRepository.save(Music);
+    public Music AddMusic(Music music) {
+        return MusicRepository.save(music);
     }
 
-    public void DeleteMusic(Music Music) {
-        MusicRepository.delete(Music);
+    public void DeleteMusic(Music music) {
+        MusicRepository.delete(music);
     }
 
 

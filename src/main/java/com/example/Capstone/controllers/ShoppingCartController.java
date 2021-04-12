@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +17,7 @@ import com.example.Capstone.entities.Music;
 import com.example.Capstone.entities.Product;
 import com.example.Capstone.entities.User;
 import com.example.Capstone.services.CapstoneUserDetailsService;
+import com.example.Capstone.services.MusicService;
 import com.example.Capstone.services.ShoppingCartService;
 
 @Controller
@@ -29,20 +31,36 @@ public class ShoppingCartController {
 	@Autowired
 	CapstoneUserDetailsService userService;
 	
+	@Autowired
+	MusicService musicService;
+	
 	@PostMapping("/saveproductincart")
 	public void saveProductInCart(@RequestBody Product product, User user) {
 		shoppingCartService.saveProduct(product);
 	}
 	
 	@PostMapping("/savemusicincart")
-	public void saveMusicInCart(@RequestBody Music music, User user) {
-		shoppingCartService.saveMusic(music);
+	public String saveMusicInCart(@ModelAttribute(value="item") Music music) {
+		Optional<Music> getmusic = musicService.GetMusicById(music.getId());
+		shoppingCartService.saveMusic(getmusic.get());
+		
+		return "redirect:music_catalog";
 	}
 	
-	@GetMapping("/deleteshoppingitem/{id}")
-	public String deleteShoppingItem(@PathVariable("id") int id) {
-		shoppingCartService.deleteItem(id);
-		return "shoppingcart";
+	@PostMapping("/deleteShoppingItem")
+	public String deleteShoppingItem(@ModelAttribute(value="cartItem") Item item, Model model) {
+		shoppingCartService.deleteItem(item.getId());
+		
+		ArrayList<Item> items = (ArrayList<Item>) shoppingCartService.showItems();
+		BigDecimal total = BigDecimal.ZERO;
+		for (Item i: items) {
+			total = total.add(i.getPrice());
+		}
+		
+		model.addAttribute("item", items);
+		model.addAttribute("total", total);
+		
+		return "redirect:shoppingcart";
 	}
 	
 	@GetMapping("/shoppingcart")
