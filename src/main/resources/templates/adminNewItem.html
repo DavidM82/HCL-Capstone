@@ -3,18 +3,17 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Edit the Item</title>
-         <link rel="stylesheet" href="../static/styles/styles.css"></link>
+    <title>Create New Item</title>
+   <link rel="stylesheet" href="../static/styles/styles.css"></link>
 </head>
-
 <body>
 <div class= "wrapper">
 <img src="../static/images/audioDB.png" alt="picture">
 </div>
 
-    <h3>Enter The Product Details Here!</h3>
+    <h3>Enter The Music Details Here!</h3>
  
- 	<form th:action="@{/adminCreateMusic}" th:object="${music}" method="post">
+ 	<form th:action="@{/adminEditMusic}" th:object="${music}" method="post">
         <input type="hidden" name="id" th:value="${music.id}">
     	<input type="hidden" name="album" th:value="${music.id}">
     	
@@ -25,9 +24,9 @@
     	<input type="number" name="trackNumber" th:value="${music.trackNumber}" required> <br />
     	
     	<label>Price: </label>
-    	<input type="number" min="0" name="price" th:value="${music.price}" required> <br />
+    	<input type="number" name="price" th:value="${music.price}" required> <br />
     	
-    	<button type="submit">Edit</button>
+    	<button type="submit">Save New Song</button>
     </form>
 
 <body>

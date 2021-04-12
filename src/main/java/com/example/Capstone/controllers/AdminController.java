@@ -117,8 +117,20 @@ public class AdminController {
 	}
 	
 	@GetMapping("/adminCreateItem")
-	public String adminCreate() {
-		return "adminCreateItem";
+	public String adminCreateItem(Model model) {
+		Music music = new Music();
+		model.addAttribute("music", music);
+		return "adminNewItem";
+	}
+	
+	@PostMapping("/adminCreateItem")
+	public String saveCreateItem(Model model, @ModelAttribute(value="music") Music song) {
+		
+		musicService.AddMusic(song);
+		
+		Iterable<Music> music = musicService.GetAllMusic();
+		model.addAttribute("music", music);
+		return "redirect:adminInventory";
 	}
 	
 }
